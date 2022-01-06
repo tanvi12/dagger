@@ -10,5 +10,6 @@ import dagger.Component;
 @Component(modules = DriverModule.class)
 public interface AppComponent {
 
-    Driver getDriver();
+    // We have to pass all the module that are not abstract and don't have defalut constructor
+    ActivityComponent getActivityComponent(DieselEngineModule dieselEngineModule);
 }

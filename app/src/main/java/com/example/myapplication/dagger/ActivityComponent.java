@@ -7,27 +7,28 @@ import javax.inject.Named;
 
 import dagger.BindsInstance;
 import dagger.Component;
+import dagger.Subcomponent;
 
 // if any dependencies is singleton we have to define component as singleton
 @PerActivity
-@Component(dependencies = {AppComponent.class},modules = {WheelsModule.class,PetrolEngineModule.class})
+@Subcomponent(modules = {WheelsModule.class,DieselEngineModule.class})
 public interface ActivityComponent {
 
     Car getCar();
 
     void inject(MainActivity mainActivity);
 
-    @Component.Builder
-    interface Builder{
-
-        ActivityComponent build();
-
-        Builder appComponent(AppComponent component);
-
-        @BindsInstance
-        Builder horsePower(@Named("horse power") int horsePower);
-
-        @BindsInstance
-        Builder engineCapacity(@Named("engine capacity") int engineCapacity);
-    }
+//    @Component.Builder
+//    interface Builder{
+//
+//        ActivityComponent build();
+//
+//        Builder appComponent(AppComponent component);
+//
+//        @BindsInstance
+//        Builder horsePower(@Named("horse power") int horsePower);
+//
+//        @BindsInstance
+//        Builder engineCapacity(@Named("engine capacity") int engineCapacity);
+//    }
 }

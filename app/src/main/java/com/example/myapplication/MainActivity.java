@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import com.example.myapplication.car.Car;
 import com.example.myapplication.dagger.ActivityComponent;
-import com.example.myapplication.dagger.DaggerActivityComponent;
+import com.example.myapplication.dagger.DieselEngineModule;
 
 
 import javax.inject.Inject;
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
        // DaggerCarComponent.create(); -> this method is only available if none of the module has an arguments
-        ActivityComponent carComponent = DaggerActivityComponent.builder().horsePower(1200).engineCapacity(300).appComponent(((App)getApplication()).getAppComponent()).build();
+        ActivityComponent carComponent = ((App)getApplication()).getAppComponent().getActivityComponent(new DieselEngineModule(120));
         carComponent.inject(this);
 
         car.drive();
